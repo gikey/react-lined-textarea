@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs", /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
+        "allowJs": true, /* Allow javascript files to be compiled. */
+        // "checkJs": true,                       /* Report errors in .js files. */
+        "jsx": "react", /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
+        "strict": true, /* Enable all strict type-checking options. */
+        "baseUrl": "./", /* Base directory to resolve non-absolute module names. */
+        // "paths": {},                           /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
+        // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
+        "typeRoots": [
+            "./types/typings.d.ts"
+        ], /* List of folders to include type definitions from. */
+        "esModuleInterop": true
+    },
+    "files": [
+        "tslint.json"
+    ],
+    "include": [
+        "./src/**/*",
+        "./example/**/*",
+        "./utils/**/*"
+    ]
+}
