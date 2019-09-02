@@ -1,6 +1,6 @@
 {
     "name": "react-lined-textarea",
-    "version": "1.1.4",
+    "version": "1.1.5",
     "description": "Textarea with Line Numbers",
     "main": "./dist/react-lined-textarea.js",
     "types": "./types/react-lined-textarea.d.ts",
