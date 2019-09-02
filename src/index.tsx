@@ -12,7 +12,7 @@ import { Sidebar } from "./components/sidebar";
 
 import "./style.scss";
 
-interface ILinedTextarea {
+export interface ILinedTextarea {
     lineHeight?: string | number;
     value?: string;
     renderLineNum?: (line: number) => ReactNode;
@@ -20,7 +20,7 @@ interface ILinedTextarea {
     onChange?: (value: string, event: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-type IInPutProps = UnionOmit<ILinedTextarea, TextareaHTMLAttributes<HTMLTextAreaElement>>;
+export type IInPutProps = UnionOmit<ILinedTextarea, TextareaHTMLAttributes<HTMLTextAreaElement>>;
 
 export default function LinedTextarea(props: IInPutProps) {
 

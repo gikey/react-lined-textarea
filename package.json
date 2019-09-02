@@ -3,6 +3,7 @@
     "version": "1.0.1",
     "description": "Textarea with Line Numbers",
     "main": "./dist/react-lined-textarea.js",
+    "types": "./types/react-lined-number.d.ts",
     "scripts": {
         "dev": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack-dev-server --config build/webpack.dev.config.ts",
         "build:lib": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack --config build/webpack.prod.config.ts",
@@ -19,7 +20,8 @@
         "number"
     ],
     "files": [
-        "dist"
+        "dist",
+        "types"
     ],
     "lint-staged": {
         "src/**/*.{ts,tsx}": [
