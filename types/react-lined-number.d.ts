@@ -13,4 +13,4 @@ export interface ILinedTextarea {
 
 export type IInPutProps = UnionOmit<ILinedTextarea, TextareaHTMLAttributes<HTMLTextAreaElement>>;
 
-declare function LinedTextarea(props: IInPutProps): JSX.Element;
+export default function LinedTextarea(props: IInPutProps): JSX.Element;
