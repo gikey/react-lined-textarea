@@ -9,6 +9,7 @@ const config: webpack.Configuration = merge(baseConfig, {
     output: {
         path: path.resolve(__dirname, "../dist"),
         filename: "react-lined-textarea.js",
+        libraryTarget: "commonjs2"
     },
     externals: [
         "react",
