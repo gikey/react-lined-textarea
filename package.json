@@ -7,7 +7,7 @@
         "dev": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack-dev-server --config build/webpack.dev.config.ts",
         "build:lib": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack --config build/webpack.prod.config.ts",
         "build:demo": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack --config build/webpack.demo.config.ts",
-        "prepublish": "build:lib"
+        "prepublish": "npm run build:lib"
     },
     "repository": {
         "type": "git",
