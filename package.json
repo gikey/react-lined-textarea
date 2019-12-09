@@ -8,7 +8,8 @@
         "dev": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack-dev-server --config build/webpack.dev.config.ts",
         "build:lib": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack --config build/webpack.prod.config.ts",
         "build:demo": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack --config build/webpack.demo.config.ts",
-        "prepublish": "npm run build:lib"
+        "prepublish": "npm run build:lib",
+        "lint": "tslint --fix src/**/*.ts"
     },
     "repository": {
         "type": "git",
@@ -73,6 +74,7 @@
         "stylelint-scss": "^3.10.0",
         "ts-loader": "^6.0.4",
         "ts-node": "^8.3.0",
+        "tslint": "^5.20.1",
         "typescript": "^3.6.2",
         "webpack": "^4.39.3",
         "webpack-cli": "^3.3.7",

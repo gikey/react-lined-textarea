@@ -10,7 +10,12 @@ function App() {
         <div className="lined-textarea-demo">
             <LinedTextarea
                 value={value}
-                renderAddon={(item) => (<div key={item} className="dot"></div>)}
+                renderAddon={(line, item) => {
+                    if (item.length > 10) {
+                        return <div key={line} className="dot"></div>
+                    }
+                    return null;
+                }}
             />
         </div>
     );

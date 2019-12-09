@@ -15,8 +15,10 @@ import "./style.scss";
 export interface ILinedTextarea {
     lineHeight?: string | number;
     value?: string;
-    renderLineNum?: (line: number) => ReactNode;
-    renderAddon?: (line: number) => ReactNode;
+    width?: string;
+    height?: string;
+    renderLineNum?: (line: number, item: string) => ReactNode;
+    renderAddon?: (line: number, item: string) => ReactNode;
     onChange?: (value: string, event: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
@@ -30,14 +32,14 @@ export default function LinedTextarea(props: IInPutProps) {
 
     const addonEl = useRef<HTMLDivElement>(null);
 
-    const [lines, setLines] = useState(1);
-
     const [textareaValue, setTextareaValue] = useState("");
 
     const {
         className,
         value = "",
         lineHeight = 1.5,
+        width = "100%",
+        height = "200px",
         onScroll,
         onChange,
         renderLineNum,
@@ -70,18 +72,17 @@ export default function LinedTextarea(props: IInPutProps) {
 
         const content = event.target.value;
 
-        setLines(content.split("\n").length);
         setTextareaValue(content);
 
         onChange && onChange(content, event);
 
     }, []);
 
-    const renderLineNumContent = useCallback((item) => {
+    const renderLineNumContent = useCallback((line, item) => {
         if (renderLineNum) {
-            return renderLineNum(item);
+            return renderLineNum(line, item);
         }
-        return (<div key={item} className="lined-textarea__linenum__item">{item + 1}</div>);
+        return (<div key={line} className="lined-textarea__linenum__item">{line + 1}</div>);
     }, []);
 
     useEffect(() => {
@@ -89,11 +90,12 @@ export default function LinedTextarea(props: IInPutProps) {
     }, [value]);
 
     return (
-        <div className={cls} style={{lineHeight}}>
+        <div className={cls} style={{lineHeight, width, height}}>
             <Sidebar
                 sidebarRef={linenumEl}
+                lineHeight={lineHeight}
                 className="lined-textarea__linenum"
-                lines={lines}
+                values={textareaValue.split("\n")}
                 renderItem={renderLineNumContent}
             />
             <textarea
@@ -108,8 +110,9 @@ export default function LinedTextarea(props: IInPutProps) {
                 renderAddon ? (
                     <Sidebar
                         sidebarRef={addonEl}
+                        lineHeight={lineHeight}
                         className="lined-textarea__addon"
-                        lines={lines}
+                        values={textareaValue.split("\n")}
                         renderItem={renderAddon}
                     />
                 ) : null

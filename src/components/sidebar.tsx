@@ -1,20 +1,24 @@
 import React, {
     HTMLAttributes,
     ReactNode,
+    Ref,
+    useMemo,
     useRef,
 } from "react";
 import { classnames } from "../../utils";
 
 interface ISidebar extends HTMLAttributes<HTMLDivElement> {
-    lines: number;
-    sidebarRef?: any;
-    renderItem: (line: number) => ReactNode;
+    values: string[];
+    lineHeight: string | number;
+    sidebarRef?: Ref<HTMLDivElement>;
+    renderItem: (line: number, item: string) => ReactNode;
 }
 
 export function Sidebar(props: ISidebar) {
 
     const {
-        lines,
+        values = [],
+        lineHeight,
         renderItem,
         sidebarRef = useRef<HTMLDivElement>(null),
         className,
@@ -25,12 +29,14 @@ export function Sidebar(props: ISidebar) {
         "lined-textarea__sidebar": true,
     }, className);
 
+    const height = useMemo(() => `${parseFloat(lineHeight.toString())}em`, [lineHeight]);
+
     return (
         <div ref={sidebarRef} className={cls} {...extra}>
             <ul className="lined-textarea__sidebar__list">
                 {
-                    [...Array(lines).keys()].map((item) => {
-                        return <li>{renderItem(item)}</li>;
+                    values.map((item, index) => {
+                        return <li style={{height}}>{renderItem(index, item)}</li>;
                     })
                 }
             </ul>
