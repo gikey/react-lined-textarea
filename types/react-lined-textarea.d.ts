@@ -6,8 +6,8 @@ export type UnionOmit<T, K> = T & Omit<K, keyof T>;
 export interface ILinedTextarea {
     lineHeight?: string | number;
     value?: string;
-    renderLineNum?: (line: number) => ReactNode;
-    renderAddon?: (line: number) => ReactNode;
+    renderLineNum?: (line: number, item: string) => ReactNode;
+    renderAddon?: (line: number, item: string) => ReactNode;
     onChange?: (value: string, event: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
