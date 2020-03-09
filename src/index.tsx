@@ -44,11 +44,13 @@ export default function LinedTextarea(props: IInPutProps) {
         onChange,
         renderLineNum,
         renderAddon,
+        disabled = false,
         ...extra
     } = props;
 
     const cls = classnames({
         "has-addon": !!renderAddon,
+        "disabled": disabled,
         "lined-textarea": true,
     }, className);
 
@@ -83,7 +85,7 @@ export default function LinedTextarea(props: IInPutProps) {
             return renderLineNum(line, item);
         }
         return (<div key={line} className="lined-textarea__linenum__item">{line + 1}</div>);
-    }, []);
+    }, [renderLineNum]);
 
     useEffect(() => {
         setTextareaValue(value);
@@ -101,6 +103,7 @@ export default function LinedTextarea(props: IInPutProps) {
             <textarea
                 value={textareaValue}
                 ref={textareaEl}
+                disabled={disabled}
                 className="lined-textarea__inner"
                 onScroll={handleScroll}
                 onChange={handleChange}

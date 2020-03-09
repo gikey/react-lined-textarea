@@ -57,6 +57,13 @@
     line-height: inherit;
   }
 
+  &.disabled {
+    .lined-textarea__inner {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+
   &.has-addon {
     .lined-textarea__inner {
       border-right: 1px solid #ccc;
